@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: TablePreviewListPage.pm 81 2005-02-03 11:30:58Z topia $
+# $Id: TablePreviewListPage.pm 100 2005-02-04 19:19:55Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/TablePreviewListPage.pm $
 package WWW::Mixi::OO::TablePreviewListPage;
 use strict;
@@ -55,8 +55,8 @@ sub _parse_table {
     $this->SUPER::_parse_table(
 	qr|<table$maybe_attrs_regex><tr><td>
              <img\s+src="?[a-z:/.]*/img/q_or1\.gif"?$maybe_attrs_regex>
-             (?>.*?<table$maybe_attrs_regex>)
-             <tr><td>(.+)
+             ((?>.*?<table$maybe_attrs_regex>)
+             <tr><td>.+)
            </td></tr><tr><td>
            <img\s+src="?[a-z:/.]*/img/q_or3\.gif"?$maybe_attrs_regex>|oisx);
 }

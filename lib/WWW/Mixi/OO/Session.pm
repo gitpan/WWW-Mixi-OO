@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: Session.pm 67 2005-02-01 23:36:35Z topia $
+# $Id: Session.pm 103 2005-02-05 06:07:57Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/Session.pm $
 package WWW::Mixi::OO::Session;
 use strict;
@@ -27,7 +27,7 @@ use constant web_charset => 'euc-jp';
 
 =head1 NAME
 
-WWW::Mixi::OO::Session - WWW::Mixi::OO session class
+WWW::Mixi::OO::Session - WWW::Mixi::OO's session class
 
 =head1 SYNOPSIS
 
@@ -55,10 +55,31 @@ WWW::Mixi::OO::Session is WWW::Mixi::OO session class.
   my $mixi = WWW::Mixi::OO::Session->new(
       email => $email,
       password => $password,
+      encoding => $encoding,
       [rewriter => sub { WWW::Mixi::OO::Util->rewrite(shift); }],
      );
 
 WWW::Mixi::OO constructor.
+
+=over 4
+
+=item email
+
+mixi email address.
+
+=item password
+
+mixi password.
+
+=item encoding
+
+internal encoding (necessary!)
+
+=item rewriter
+
+coderef to rewriter, into text
+
+=back
 
 =cut
 
@@ -139,7 +160,7 @@ sub password {
 
   $mixi->rewriter->('<foo>bar</foo>');
 
-get/set rewriter.
+get/set rewriter (into text).
 
 =cut
 

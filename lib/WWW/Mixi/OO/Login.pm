@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: Login.pm 50 2005-01-31 02:10:21Z topia $
+# $Id: Login.pm 96 2005-02-04 16:55:48Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/Login.pm $
 package WWW::Mixi::OO::Login;
 use strict;
@@ -11,7 +11,7 @@ use base qw(WWW::Mixi::OO::Page);
 
 =head1 NAME
 
-WWW::Mixi::OO::Login - WWW::Mixi::OO L<http://mixi.jp/login.pl> class
+WWW::Mixi::OO::Login - WWW::Mixi::OO's L<http://mixi.jp/login.pl> class
 
 =head1 SYNOPSIS
 

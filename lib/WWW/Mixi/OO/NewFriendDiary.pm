@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: NewFriendDiary.pm 71 2005-02-02 11:43:46Z topia $
+# $Id: NewFriendDiary.pm 96 2005-02-04 16:55:48Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/NewFriendDiary.pm $
 package WWW::Mixi::OO::NewFriendDiary;
 use strict;
@@ -11,7 +11,7 @@ use base qw(WWW::Mixi::OO::TableHistoryListPage);
 
 =head1 NAME
 
-WWW::Mixi::OO::NewFriendDiary - WWW::Mixi::OO
+WWW::Mixi::OO::NewFriendDiary - WWW::Mixi::OO's
 L<http://mixi.jp/new_friend_diary.pl> class
 
 =head1 SYNOPSIS
@@ -33,11 +33,11 @@ new_friend_diary page handler
 
 =item parse
 
-=over 4
-
 see super class (L<WWW::Mixi::OO::Page>).
 
 this module handle following params
+
+=over 4
 
 =item diary_type
 

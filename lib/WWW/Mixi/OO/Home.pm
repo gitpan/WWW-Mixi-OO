@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: Home.pm 48 2005-01-31 01:10:05Z topia $
+# $Id: Home.pm 96 2005-02-04 16:55:48Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/Home.pm $
 package WWW::Mixi::OO::Home;
 use strict;
@@ -11,7 +11,7 @@ use base qw(WWW::Mixi::OO::Page);
 
 =head1 NAME
 
-WWW::Mixi::OO::Home - WWW::Mixi::OO L<http://mixi.jp/home.pl> class
+WWW::Mixi::OO::Home - WWW::Mixi::OO's L<http://mixi.jp/home.pl> class
 
 =head1 SYNOPSIS
 

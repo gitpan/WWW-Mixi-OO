@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: ShowLog.pm 31 2005-01-29 20:53:40Z topia $
+# $Id: ShowLog.pm 94 2005-02-04 12:39:28Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/ShowLog.pm $
 package WWW::Mixi::OO::ShowLog;
 use strict;
@@ -51,6 +51,7 @@ sub _parse_body {
 	    $anchor = $this->html_anchor_to_uri($anchor);
 	    my $data = {
 		date => $this->convert_time($date),
+		time => $this->convert_time($date),
 		name => $this->rewrite($name),
 		link => $anchor,
 		$this->analyze_uri($anchor),

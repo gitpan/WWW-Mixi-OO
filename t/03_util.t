@@ -97,3 +97,61 @@ TODO: {
     $do_test->('&quot;&apos;', qq|\"\'|, '&quot;&apos;');
 };
 
+TODO: {
+    can_ok($pkg, 'extract_balanced_html_parts');
+    my $text = '__junk_foo__
+<ul>
+  <li attr="1">foo</li>
+  <li>bar
+    <ul>
+      __junk_bar_1__
+      <li>bar-foo</li>
+      <li>bar-bar</li>
+      __junk_bar_2__
+    </ul>
+  </li>
+  <li>baz
+    <ul>
+      __junk_baz_1__
+      <li>baz-foo</li>
+      __junk_baz_2__
+      <li>baz-bar</li>
+      __junk_baz_3__
+  </li>
+  __junk_qux__
+</ul>
+__junk_quux__';
+    is_deeply(['<li attr="1">foo</li>', '<li>bar
+    <ul>
+      __junk_bar_1__
+      <li>bar-foo</li>
+      <li>bar-bar</li>
+      __junk_bar_2__
+    </ul>
+  </li>', '<li>baz
+    <ul>
+      __junk_baz_1__
+      <li>baz-foo</li>
+      __junk_baz_2__
+      <li>baz-bar</li>
+      __junk_baz_3__
+  </li>'], [$pkg->extract_balanced_html_parts(
+     ignore_outside => 0,
+     element => 'li',
+     text => $text)], 'extract_balanced_html_parts: ignore_outside: 0');
+    is_deeply(['<li>bar-foo</li>', '<li>bar-bar</li>', '<li>baz-foo</li>',
+	       '<li>baz-bar</li>'], [$pkg->extract_balanced_html_parts(
+     ignore_outside => 1,
+     element => 'li',
+     text => $text)], 'extract_balanced_html_parts: ignore_outside: 1');
+    is_deeply([], [$pkg->extract_balanced_html_parts(
+	ignore_outside => 2,
+	element => 'li',
+	text => $text)], 'extract_balanced_html_parts: ignore_outside: 2');
+    is_deeply([qw(bar-foo bar-bar baz-foo baz-bar)],
+	      [$pkg->extract_balanced_html_parts(
+		  ignore_outside => 1,
+		  exclude_border_element => 1,
+		  element => 'li',
+		  text => $text)], 'extract_balanced_html_parts: exclude_border_element: 1');
+};

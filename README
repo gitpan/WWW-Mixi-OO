@@ -28,6 +28,7 @@ This module requires these other modules and libraries:
   LWP::UserAgent
   Hash::Case::Preserve
   Class::Accessor::Fast
+  HTML::Parser
 
 optionally:
 
@@ -35,9 +36,7 @@ optionally:
 
 COPYRIGHT AND LICENCE
 
-Put the correct copyright and licence information here.
-
-Copyright (C) 2005 by Tatsuya Noda
+Copyright (C) 2005 by Topia
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.6 or,

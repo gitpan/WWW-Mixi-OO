@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: TableListPage.pm 81 2005-02-03 11:30:58Z topia $
+# $Id: TableListPage.pm 100 2005-02-04 19:19:55Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/TableListPage.pm $
 package WWW::Mixi::OO::TableListPage;
 use strict;
@@ -58,7 +58,11 @@ parse title message. return scalar or array of scalar.
 
 =cut
 
-sub parse { @{shift->parse_body} }
+sub parse {
+    my $body = shift->parse_body;
+    return () unless defined $body;
+    return @$body;
+}
 
 foreach (qw(prev current next)) {
     eval <<"END";
@@ -142,7 +146,9 @@ sub _split_tables {
     my ($this, $part) = @_;
 
     my $maybe_attrs_regex = $this->regex_parts->{html_maybe_attrs};
-    my @tables = $part =~ m|(<table$maybe_attrs_regex>(?>.*?</table>))\s*|oisg;
+    my @tables = $this->extract_balanced_html_parts(
+	element => 'table',
+	text => $part);
     $this->cache->{tables} = \@tables;
     $this->cache->{indecies}->{title} = 0;
     if (@tables > 2) {

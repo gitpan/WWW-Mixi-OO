@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: ListPage.pm 84 2005-02-04 04:01:41Z topia $
+# $Id: ListPage.pm 106 2005-02-05 10:35:38Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/ListPage.pm $
 package WWW::Mixi::OO::ListPage;
 use strict;
@@ -32,9 +32,9 @@ list pages base class.
 
 =item uri
 
-see parent class (L<WWW::Mixi::OO::Page>).
+see super class (L<WWW::Mixi::OO::Page>).
 
-this module handle following params
+this module handle following params:
 
 =over 4
 
@@ -56,9 +56,9 @@ sub uri {
 
 =item parse_uri
 
-see parent class (L<WWW::Mixi::OO::Page>).
+see super class (L<WWW::Mixi::OO::Page>).
 
-this module handle following params
+this module handle following params:
 
 =over 4
 
@@ -143,7 +143,7 @@ sub fetch {
 	last if defined $limit && @items > $limit;
 	push @items, $this->get($next->{link}, %options);
     }
-    if (defined $limit) {
+    if (defined $limit && @items > $limit) {
 	splice @items, $limit;
     }
     return @items;

@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: I18N.pm 43 2005-01-30 13:20:13Z topia $
+# $Id: I18N.pm 96 2005-02-04 16:55:48Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/I18N.pm $
 package WWW::Mixi::OO::I18N;
 use strict;
@@ -14,7 +14,7 @@ our %modules = (
 
 =head1 NAME
 
-WWW::Mixi::OO::I18N - WWW::Mixi::OO internationalization class
+WWW::Mixi::OO::I18N - WWW::Mixi::OO's internationalization class
 
 =head1 SYNOPSIS
 
@@ -24,9 +24,9 @@ WWW::Mixi::OO::I18N - WWW::Mixi::OO internationalization class
 
 =head1 DESCRIPTION
 
-WWW::Mixi::OO::I18N is WWW::Mixi::OO internationalization class.
+WWW::Mixi::OO::I18N is WWW::Mixi::OO's internationalization class.
 
-this module will be able to multi internal charset process for WWW::Mixi::OO.
+This module provides multi internal charset processing to WWW::Mixi::OO.
 
 =head1 METHODS
 

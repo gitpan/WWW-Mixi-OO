@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: TableHistoryListPage.pm 83 2005-02-03 17:22:17Z topia $
+# $Id: TableHistoryListPage.pm 94 2005-02-04 12:39:28Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/TableHistoryListPage.pm $
 package WWW::Mixi::OO::TableHistoryListPage;
 use strict;
@@ -82,6 +82,7 @@ sub _parse_body {
 		link => $anchor,
 		$this->analyze_uri($anchor),
 		date => $this->convert_time($date),
+		time => $this->convert_time($date),
 		name => $this->rewrite($name),
 		$this->_parse_body_subject($title),
 	    };

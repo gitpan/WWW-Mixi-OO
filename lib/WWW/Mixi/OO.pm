@@ -2,14 +2,14 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: OO.pm 91 2005-02-04 04:29:58Z topia $
+# $Id: OO.pm 110 2005-02-05 10:48:57Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO.pm $
 package WWW::Mixi::OO;
 use strict;
 use warnings;
 use WWW::Mixi::OO::Session;
 use constant session_class => 'WWW::Mixi::OO::Session';
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 =head1 NAME
 
@@ -27,7 +27,7 @@ WWW::Mixi::OO - LWP::UserAgent based Mixi Access Helper Module
 
 =head1 DESCRIPTION
 
-mixi (L<http://mixi.jp/>) is Japanese Social Network Service.
+mixi (L<http://mixi.jp/>) is a social network service in Japan.
 
 This module provides L<WWW::Mixi> compatible interface.
 use L<WWW::Mixi::OO::Session> for real L<WWW::Mixi::OO>'s interface.
@@ -88,6 +88,9 @@ sub AUTOLOAD {
     our $AUTOLOAD;
     $_ = $AUTOLOAD;
 
+    # convert name
+    s/url/uri/g;
+
     if (/^(parse|get)_(calendar)(_[^_]+)?$/ or # calendar & calendar_next
 	    /^(parse|get)_([^_]+_[^_]+)(_[^_]+)?$/) { # foo_bar & ...
 	# parse or get
@@ -115,6 +118,8 @@ sub AUTOLOAD {
 	my $page = $session->page($pagename);
 	my $method = "$main_method$sub_method";
 	$page->$method(@_);
+    } elsif (/^session$/) {
+	$session->session_id(@_);
     } else {
 	# last resort: send to session
 	$session->$_(@_);
@@ -125,11 +130,15 @@ sub AUTOLOAD {
 __END__
 =back
 
+=head1 BUGS
+
+This module did not complete yet.
+
 =head1 SEE ALSO
 
 L<WWW::Mixi::OO::Session>
 
-L<WWW::Mixi>
+L<WWW::Mixi> (L<http://digit.que.ne.jp/work/index.cgi?Perl%a5%e2%a5%b8%a5%e5%a1%bc%a5%eb%2fWWW%3a%3aMixi> in Japanese)
 
 L<http://mixi.jp/>
 

@@ -2,7 +2,7 @@
 # copyright (C) 2005 Topia <topia@clovery.jp>. all rights reserved.
 # This is free software; you can redistribute it and/or modify it
 #   under the same terms as Perl itself.
-# $Id: ListMessage.pm 42 2005-01-30 13:19:33Z topia $
+# $Id: ListMessage.pm 100 2005-02-04 19:19:55Z topia $
 # $URL: file:///usr/minetools/svnroot/mixi/trunk/WWW-Mixi-OO/lib/WWW/Mixi/OO/ListMessage.pm $
 package WWW::Mixi::OO::ListMessage;
 use strict;
@@ -31,6 +31,22 @@ sub parse_uri {
     $this->SUPER::parse_uri($data, %options);
 }
 
+sub _parse_table {
+    my $this = shift;
+    return $this->SUPER::_parse_table(@_) if @_ == 1; # overridable
+
+    my $attr_regex = $this->regex_parts->{html_attr};
+    my $attrval_regex = $this->regex_parts->{html_attrval};
+    my $maybe_attrs_regex = $this->regex_parts->{html_maybe_attrs};
+    $this->SUPER::_parse_table(
+	qr|<table$maybe_attrs_regex>\s*<tr>\s*<td>
+             <img\s+src="?[a-z:/.]*/img/q_brown1\.gif"?$maybe_attrs_regex>
+             ((?>.*?<table$maybe_attrs_regex>)\s*
+             <tr><td>\s*.+)\s*
+           </td></tr>\s*</table>(?>.*?<tr>)\s*<td>
+           <img\s+src="?[a-z:/.]*/img/q_brown3\.gif"?$maybe_attrs_regex>|oisx);
+}
+
 sub _parse_body {
     my $this = shift;
     my $part = $this->parse_table_item('body');
@@ -53,6 +69,7 @@ sub _parse_body {
 	    $img = $this->html_attr_to_uri('src', $img);
 	    my $data = {
 		date => $this->convert_time($date),
+		time => $this->convert_time($date),
 		name => $this->rewrite($name),
 		subject => $this->rewrite($subject),
 		link => $anchor,

@@ -10,6 +10,7 @@ WriteMakefile(
 	LWP::UserAgent => 0,
 	Hash::Case::Preserve => 0,
 	Class::Accessor::Fast => 0,
+	HTML::Parser => 0,
     }, # e.g., Module::Name => 1.1
     ABSTRACT_FROM  => 'lib/WWW/Mixi/OO.pm', # retrieve abstract from module
     AUTHOR         => 'Topia <topia@clovery.jp>',
