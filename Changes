@@ -1,0 +1,17 @@
+Revision history for Perl extension WWW::Mixi::OO.
+
+0.02  Fri Feb 04 13:32:29 2005
+ - fix bug.
+  * add 'use POSIX' to I18N subclass.
+  * pass %options to fetch's second (and later) get (Page->mk_get_method).
+  * fast return on string undefined (Util->{remove_tag,escape,unescape}).
+  * TableListPage->parse_title return only defined value.
+
+ - sync mixi change.
+  * move TableHistoryListPage->_parse_navi to TableListPage->_parse_navi.
+  * remove other _parse_navi.
+
+0.01  Sat Jan 15 03:48:20 2005
+ - original version; created by h2xs 1.23 with options
+   -ABXb 5.6.0 -n WWW::Mixi::OO
+
